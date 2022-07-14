@@ -20,30 +20,71 @@
     <title>Kitkat</title>
 </head>
 <body>
-    <h1 class="text-center">Kitkat app</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 class="text-center">Find your faviourite fury friend</h2>
-                <h3 class="text-center">By using our random cat button below</h3>
-            </div>
-        </div>
-           
-                <div class="container">            
-                    <div class="row">
-                        <div class="col-md mb-4">
-                            
-                            {{ name }}
-                            <img src="{{ image_url }}" class="img-thumbnail rounded-circle border border-danger" alt="{{ name }} image" aria-label="{{ name }} image">
-                            
-                           
-                        </div>     
+    <header class="col-sm bk-header-colour ">
+        <h1 class = "text-center font-weight-bold pb-4">Feline Friend Finder</h1>
+    </header>
+    <form id="form_cat" action="{% url 'index'%} " method="POST">
+        {% csrf_token %}
+        <h3 class="text-center mb-4 mt-0 bk-header-colour font-weight-bold">
+            <select name="breed" id="breed" class="my-3" place>
+                <option value="" disabled selected hidden>Choose a breed</option>
+                {% for breed in response %}
+                    
+                    <option value="{{breed.name}}">{{breed.name}}</option>
+                {% endfor %}
+            </select>
+        </h3>
+        {% if breed %}
+            <div class="container">            
+                <div class="row">
+                    <div class="col-md mb-4">
+                        <img src="{{ image_url }}" class="img-thumbnail rounded-circle border border-danger" alt="{{ name }} image" aria-label="{{ name }} image">
+                    </div>     
+                    <div class="col-md bk-colour border rounded border-danger bk-desc-colour p-2 ">
+                        <h1 class = "text-center font-weight-bold">{{name}}</h1>    
+                        <table>          
+                            <tr>
+                                <td class = "font-weight-bold">Affection rating   : </td>
+                                <td class = "font-weight-italic "><span class = "text-center font-weight-bold paw-colour" id="affection_level"></span>
+                                </td>
+                            </tr>
+                        </table>
+                        <p class = "text-left">{{description}}</p>
+                        <table>       
+                            <tr>
+                                <td class = "text-left font-weight-bold">Temperament:</td>
+                                <td class= "font-weight-normal text-dark">{{temperament}}</td>
+                            </tr>
+                            <tr>
+                                <td class = "text-left font-weight-bold">Life span:</td>
+                                <td class= "font-weight-normal text-dark">{{life_span}} years</td>
+                            </tr>
                         
-                    </div>
+                            <tr>
+                                <td class = "text-left font-weight-bold">Origin:</td>
+                                <td class= "font-weight-normal text-dark">{{origin}}</td>
+                            </tr>
+                            <tr>
+                                <td class = "text-left font-weight-bold">Wikipedia url:</td>
+                                <td class= "font-weight-normal text-dark">
+                                    <a href="{{wikipedia_url}}" target="_blank" rel="noopener" aria-label="wikipedia url (opens a new tab)"><u>Click here</u></a>
+                                </td>
+                            </tr>
+                        </table>
+                    <div>
                 </div>
-             
-               
-           
-    </div>
+            </div>
+        {% else %}
+            <div class = "text-center">
+                <img src="https://cdn2.thecatapi.com/images/7isAO4Cav.jpg" class="img text-center rounded-circle border border-danger" alt="Cat hero image" aria-label="Cat hero image">
+            </div>
+        {% endif %}
+    </form>   
+    <!-- script js -->
+    <script>
+        let affection_level_paws = '{{affection_level}}'
+        let breed = '{{breed}}'
+    </script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

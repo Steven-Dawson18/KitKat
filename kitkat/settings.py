@@ -31,7 +31,7 @@ API_KEY = os.environ.get("API_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -78,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kitkat.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-stevendawson18-kitkat-5xn8ymm07d4.ws-eu53.gitpod.io']
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

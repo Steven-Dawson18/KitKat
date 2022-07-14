@@ -1,3 +1,44 @@
-#title {
-    text-align: center;
+
+  body {
+    background: url('../images/fur.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    font-family: 'Bellota';
+}
+
+a {
+  color: black;
+  bottom: -3px; /* this is to match where the border is */
+  transform-origin: left; 
+  transform: scale(0);
+  transition: 0.25s linear;
+}
+
+a:hover {
+  color: #B5721C;
+}
+
+.paw-colour{
+  color:black;
+}
+
+.bk-colour{
+  background-color: white;
+}
+
+.bk-header-colour{
+  background: url('../images/fur-mono2.jpg')no-repeat center fixed;
+  background-size: cover;
+  color:white;
+}
+
+.bk-desc-colour{
+  background: url('../images/white-fur.jpg')no-repeat center fixed;
+  background-size: cover;
+  color:black;
+}
+
+.img{
+  width:300px;
+  
 }
